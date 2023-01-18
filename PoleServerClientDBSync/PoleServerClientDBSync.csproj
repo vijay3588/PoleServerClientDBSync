@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+    <PackageReference Include="Microsoft.SyncFramework" Version="2.1.0.2" />
+    <PackageReference Include="Microsoft.SyncFramework.DatabaseProvider" Version="3.1.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Synchronization">
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Synchronization\2.1.0.0__89845dcd8080cc91\Microsoft.Synchronization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data">
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Synchronization.Data\3.1.0.0__89845dcd8080cc91\Microsoft.Synchronization.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Synchronization.Data.SqlServer">
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Synchronization.Data.SqlServer\3.1.0.0__89845dcd8080cc91\Microsoft.Synchronization.Data.SqlServer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

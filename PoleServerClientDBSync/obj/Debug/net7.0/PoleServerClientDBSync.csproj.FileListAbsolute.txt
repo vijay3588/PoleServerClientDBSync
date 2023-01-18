@@ -1,0 +1,15 @@
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\bin\Debug\net7.0\PoleServerClientDBSync.exe
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\bin\Debug\net7.0\PoleServerClientDBSync.deps.json
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\bin\Debug\net7.0\PoleServerClientDBSync.runtimeconfig.json
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\bin\Debug\net7.0\PoleServerClientDBSync.dll
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\bin\Debug\net7.0\PoleServerClientDBSync.pdb
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.csproj.AssemblyReference.cache
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.AssemblyInfoInputs.cache
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.AssemblyInfo.cs
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.csproj.CoreCompileInputs.cache
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.dll
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\refint\PoleServerClientDBSync.dll
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.pdb
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\PoleServerClientDBSync.genruntimeconfig.cache
+C:\Users\v.palani\source\PoleServerClientDBSync\PoleServerClientDBSync\obj\Debug\net7.0\ref\PoleServerClientDBSync.dll

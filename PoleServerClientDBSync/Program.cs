@@ -21,55 +21,70 @@ namespace MicrosoftSyncFramework
         //Get Data From Client Provision
         public static void ProvisionClient()
         {
-
-            //Drop scope_Info Table
-            string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
-               WHERE TABLE_NAME='scope_info') DROP table scope_info";
-            clientConn.Open();
-            SqlCommand cmd = new SqlCommand(cmdText, clientConn);
-            cmd.ExecuteScalar();
-            clientConn.Close();
-
-            List<string> tables = new List<string>();
-            tables.Add("Employee"); // Add Tables in List
-
-            DbSyncScopeDescription scopeDesc = new DbSyncScopeDescription("MainScope");
-            foreach (var tbl in tables) //Add Tables in Scope
+            try
             {
-                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, clientConn));
+                //Drop scope_Info Table
+                string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
+               WHERE TABLE_NAME='scope_info') DROP table scope_info";
+                clientConn.Open();
+                SqlCommand cmd = new SqlCommand(cmdText, clientConn);
+                cmd.ExecuteScalar();
+                clientConn.Close();
+
+                List<string> tables = new List<string>();
+                tables.Add("Employee"); // Add Tables in List
+
+                DbSyncScopeDescription scopeDesc = new DbSyncScopeDescription("MainScope");
+                foreach (var tbl in tables) //Add Tables in Scope
+                {
+                    scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, clientConn));
+                }
+
+                SqlSyncScopeProvisioning clientProvision = new SqlSyncScopeProvisioning(clientConn, scopeDesc); //Provisioning
+
+                if (!clientProvision.ScopeExists(Program.sScope))
+                    clientProvision.Apply();
             }
-
-            SqlSyncScopeProvisioning clientProvision = new SqlSyncScopeProvisioning(clientConn, scopeDesc); //Provisioning
-
-            if (!clientProvision.ScopeExists(Program.sScope))
-                clientProvision.Apply();
-
+            catch
+            {
+                // Shut down database connections.
+                clientConn.Close();
+                clientConn.Dispose();
+            }
         }
 
         //Set Data To Server Provision
         public static void ProvisionServer()
         {
-            string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
-                   WHERE TABLE_NAME='scope_info') DROP table scope_info";
-            serverConn.Open();
-            SqlCommand cmd = new SqlCommand(cmdText, serverConn);
-            cmd.ExecuteScalar();
-            serverConn.Close();
-
-            List<string> tables = new List<string>();
-            tables.Add("Employee");
-
-            var scopeDesc = new DbSyncScopeDescription("MainScope");
-            foreach (var tbl in tables)
+            try
             {
-                scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
+                string cmdText = @"IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES 
+                   WHERE TABLE_NAME='scope_info') DROP table scope_info";
+                serverConn.Open();
+                SqlCommand cmd = new SqlCommand(cmdText, serverConn);
+                cmd.ExecuteScalar();
+                serverConn.Close();
+
+                List<string> tables = new List<string>();
+                tables.Add("Employee");
+
+                var scopeDesc = new DbSyncScopeDescription("MainScope");
+                foreach (var tbl in tables)
+                {
+                    scopeDesc.Tables.Add(SqlSyncDescriptionBuilder.GetDescriptionForTable(tbl, serverConn));
+                }
+
+                SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
+
+                if (!serverProvision.ScopeExists(Program.sScope))
+                    serverProvision.Apply();
             }
-
-            SqlSyncScopeProvisioning serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc); // Create Provision From All Tables
-
-            if (!serverProvision.ScopeExists(Program.sScope))
-                serverProvision.Apply();
-
+            catch
+            {
+                // Shut down database connections.
+                serverConn.Close();
+                serverConn.Dispose();
+            }
         }
 
         static void Program_ApplyChangeFailed(object sender, DbApplyChangeFailedEventArgs e)
